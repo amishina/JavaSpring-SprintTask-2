@@ -1,7 +1,9 @@
 package bitlab.techorda.springboot.Sprinttask2.controller;
 
 import bitlab.techorda.springboot.Sprinttask2.Models.ApplicationRequest;
+import bitlab.techorda.springboot.Sprinttask2.Models.Courses;
 import bitlab.techorda.springboot.Sprinttask2.repository.AppRequestRepository;
+import bitlab.techorda.springboot.Sprinttask2.repository.CoursesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,9 @@ public class HomeController {
 
     @Autowired
     private AppRequestRepository appRequestRepository;
+
+    @Autowired
+    private CoursesRepository coursesRepository;
 
     @GetMapping(value="/")
     public String indexPage(Model model){
@@ -34,6 +39,8 @@ public class HomeController {
 
     @GetMapping(value="add-request")
     public String addRequest(Model model){
+        List<Courses> coursesList = coursesRepository.findAll();
+        model.addAttribute("courses",coursesList);
         return "add-request";
     }
 
@@ -52,8 +59,13 @@ public class HomeController {
 
     @GetMapping(value="/details/{reqId}")
     public String requestDetails(@PathVariable(name="reqId") Long id, Model model){
+
         ApplicationRequest appRequest = appRequestRepository.findById(id).orElse(null);
         model.addAttribute("appRequest", appRequest);
+
+        List<Courses> coursesList = coursesRepository.findAll();
+        model.addAttribute("courses",coursesList);
+
         return "details";
     }
 

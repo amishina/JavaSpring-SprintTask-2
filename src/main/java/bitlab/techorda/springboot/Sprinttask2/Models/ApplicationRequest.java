@@ -24,8 +24,8 @@ public class ApplicationRequest {
     @Column(name="username")
     private String userName;
 
-    @Column(name="course_name")
-    private String courseName;
+    @ManyToOne
+    private Courses courseName;
 
     @Column(name="commentary")
     private String commentary;

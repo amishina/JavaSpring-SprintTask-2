@@ -9,7 +9,7 @@
                 <div class="card mb-3 bg-light">
                     <div class="card-body">
                         <h5 th:text="'Request from ' + ${handledReqs.getUserName()}"></h5>
-                        <p th:text="'Course: ' + ${handledReqs.getCourseName()}" class="card-text"></p>
+                        <p th:text="'Course: ' + ${handledReqs.courseName.name}" class="card-text"></p>
                         <p th:text="${handledReqs.getCommentary()}" class="card-text"></p>
                         <h6>
                             <span th:text="'Phone: ' + ${handledReqs.getPhone()}"

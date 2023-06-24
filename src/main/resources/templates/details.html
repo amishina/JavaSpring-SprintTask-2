@@ -34,8 +34,13 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-12">
-                            <input type="text" class="form-control bg-light" name="courseName"
-                                   readonly th:value="${appRequest.courseName}">
+                            <select class="form-select" name="courseName.id">
+                                <option th:each="course : ${courses}"
+                                        th:value="${course.id}"
+                                        th:selected="${appRequest.courseName.id==course.id}"
+                                        th:text="${course.name + ' / ' + course.price}">
+                                </option>
+                            </select>
                         </div>
                     </div>
                     <div class="row mt-3">

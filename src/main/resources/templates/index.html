@@ -13,7 +13,7 @@
                                   th:style = "${reqs.handled==false ? 'color:red' : 'color:black' }"></span>
                             <span th:text="'Request from ' + ${reqs.getUserName()}"></span>
                         </h5>
-                        <p th:text="'Course: ' + ${reqs.getCourseName()}" class="card-text"> </p>
+                        <p th:text="'Course: ' + ${reqs.courseName.name}" class="card-text"> </p>
                         <p th:text="${reqs.getCommentary()}" class="card-text"></p>
                         <h6>
                             <span th:text="'Phone: ' + ${reqs.getPhone()}"
